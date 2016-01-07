@@ -94,10 +94,14 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Aplicacion\Default.aspx" />
+    <Content Include="Aplicacion\Pages\Listar.aspx" />
+    <Content Include="Aplicacion\Styles\General.css" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Aplicacion\General.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -111,12 +115,31 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aplicacion\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicacion\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicacion\General.Master.cs">
+      <DependentUpon>General.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicacion\General.Master.designer.cs">
+      <DependentUpon>General.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicacion\Pages\Listar.aspx.cs">
+      <DependentUpon>Listar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicacion\Pages\Listar.aspx.designer.cs">
+      <DependentUpon>Listar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Aplicacion\Images\" />
-    <Folder Include="Aplicacion\Pages\" />
-    <Folder Include="Aplicacion\Styles\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
