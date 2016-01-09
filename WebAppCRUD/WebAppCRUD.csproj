@@ -102,6 +102,7 @@
     <Content Include="Aplicacion\Styles\General.css" />
     <Content Include="Aplicacion\Styles\MyGridView.css" />
     <Content Include="App_Data\DB.mdf" />
+    <Content Include="App_Data\DB.sdf" />
     <Content Include="App_Data\DB_log.ldf">
       <DependentUpon>DB.mdf</DependentUpon>
     </Content>
