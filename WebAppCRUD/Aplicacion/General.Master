@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Aplicación de Prueba</title>
     <link href="Styles/General.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/MyGridView.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>

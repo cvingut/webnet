@@ -95,6 +95,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Aplicacion\Default.aspx" />
+    <Content Include="Aplicacion\Images\grd_alt.png" />
+    <Content Include="Aplicacion\Images\grd_head.png" />
+    <Content Include="Aplicacion\Images\grd_pgr.png" />
     <Content Include="Aplicacion\Pages\Listar.aspx" />
     <Content Include="Aplicacion\Styles\General.css" />
     <Content Include="Aplicacion\Styles\MyGridView.css" />
@@ -143,9 +146,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Aplicacion\Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

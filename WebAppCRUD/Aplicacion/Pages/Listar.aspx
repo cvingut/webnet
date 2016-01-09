@@ -8,7 +8,9 @@
     </p>
     <form id="fpUsuarios" runat="server">
     <asp:sqldatasource runat="server" ID="DSUsuarios" ProviderName="System.Data.SqlServerCe.4.0" SelectCommand="Select [Id],[nombre],[apellido1],[apellido2],[cuenta] from Usuarios" ConnectionString="Data Source=|DataDirectory|\DB.sdf"></asp:sqldatasource>
-    <asp:GridView ID="gvUsuarios" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="DSUsuarios">
+    <asp:GridView ID="gvUsuarios" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="DSUsuarios" GridLines="None"  
+                AllowPaging="true" CssClass="mGrid" PagerStyle-CssClass="pgr" AlternatingRowStyle-CssClass="alt"  
+                PageSize="7">
         <Columns>
             <asp:BoundField DataField="nombre" HeaderText="Nombre" />
             <asp:BoundField DataField="apellido1" HeaderText="Primer Apellido" />

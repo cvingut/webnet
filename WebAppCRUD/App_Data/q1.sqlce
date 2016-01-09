@@ -1,0 +1,12 @@
+CREATE TABLE [Usuarios] (
+  [Id] numeric(100,100) DEFAULT  NOT NULL
+, [username] nvarchar(100) NOT NULL
+, [pass] nvarchar(100) NOT NULL
+, [nombre] nvarchar(100) NOT NULL
+, [apellido1] nvarchar(100) NOT NULL
+, [apellido2] nvarchar(100) NOT NULL
+, [cuenta] nvarchar(100) NULL
+);
+GO
+ALTER TABLE [Usuarios] ADD CONSTRAINT [PK_Usuarios] PRIMARY KEY ([Id]);
+GO
