@@ -99,6 +99,7 @@
     <Content Include="Aplicacion\Images\grd_head.png" />
     <Content Include="Aplicacion\Images\grd_pgr.png" />
     <Content Include="Aplicacion\Pages\Listar.aspx" />
+    <Content Include="Aplicacion\Pages\WebForm1.aspx" />
     <Content Include="Aplicacion\Styles\General.css" />
     <Content Include="Aplicacion\Styles\MyGridView.css" />
     <Content Include="App_Data\DB.sdf" />
@@ -140,6 +141,13 @@
     </Compile>
     <Compile Include="Aplicacion\Pages\Listar.aspx.designer.cs">
       <DependentUpon>Listar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicacion\Pages\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicacion\Pages\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
