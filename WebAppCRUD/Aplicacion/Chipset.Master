@@ -29,24 +29,46 @@
     </asp:ContentPlaceHolder>
 </head>
 <body id="MainContent" class="container-fluid" style="padding:8px;margin:0px;">
-    <div  class="panel panel-default" style="padding:0px;margin:0px;min-height:100%">
-        <asp:ContentPlaceHolder ID="main" runat="server" EnableViewState="true" >
+    <div  class="panel panel-default" style="padding:0px;margin:0px;min-height:100%;">
+        <asp:ContentPlaceHolder ID="main" runat="server" EnableViewState="true">
             <%-- Contenido de la página --%>
         </asp:ContentPlaceHolder>
     </div>
 
     <script>  
-        var windowsPrevH;
-        $(window).resize(function () {
+//        $grid-columns:      12;
+//        $grid-gutter-width: 30px;
+
+//        $grid-breakpoints: (
+//        // Extra small screen / phone
+//        xs: 0,
+//        // Small screen / phone
+//            sm: 544px,
+//            // Medium screen / tablet
+//        md: 768px,
+//        // Large screen / desktop
+//        lg: 992px,
+//        // Extra large screen / wide desktop
+//        xl: 1200px
+//);
+
+//        $container-max-widths: (
+//        sm: 576px,
+//        md: 720px,
+//        lg: 940px,
+//        xl: 1140px
+//        );
+        //var windowsPrevH;
+        //$(window).resize(function () {
            
-            //$("#MainContent").height($(window).height() - parseInt($("#MainContent").css("padding-bottom")) - parseInt($("#MainContent").css("padding-top")));
-            resizeFitHeightObjects();            
-            //$("#MainContent").css('min-height', '100%');
-        },500);
+        //    $("#MainContent").height($(window).height() - parseInt($("#MainContent").css("padding-bottom")) - parseInt($("#MainContent").css("padding-top")));
+        //    //resizeFitHeightObjects();            
+        //    //$("#MainContent").css('min-height', '100%');
+        //});
         $(document).ready(function () {
-            windowsPrevH = $(window).height();
+            //windowsPrevH = $(window).height();
             $("#MainContent").height($(window).height() - parseInt($("#MainContent").css("padding-bottom")) - parseInt($("#MainContent").css("padding-top")));
-            resizeFitHeightObjects();
+            //resizeFitHeightObjects();
             //$("#MainContent").css('min-height', '100%');
         });
 
@@ -58,24 +80,24 @@
         //    console.log( 'Height changed to' + $(this).height() );
         //}).trigger('resize');
 
-        function resizeFitHeightObjects() {
-            if (windowsPrevH!==null) {
+        //function resizeFitHeightObjects() {
+        //    if (windowsPrevH!==null) {
 
             
-            var dif = $(window).height()- windowsPrevH;
-            $("div").each(function (i) {
-                //obj = this;
-                try {
-                    $(this).height($(this).parent().height() + dif - parseInt($(this).css("padding-bottom")) - parseInt($(this).css("padding-top")) - parseInt($(this).css("margin-bottom")) - parseInt($(this).css("margin-top")));
-                } catch (e) {
-                    console.log(e.message);
-                } 
+        //    var dif = $(window).height()- windowsPrevH;
+        //    $("div").each(function (i) {
+        //        //obj = this;
+        //        try {
+        //            $(this).height($(this).parent().height() + dif - parseInt($(this).css("padding-bottom")) - parseInt($(this).css("padding-top")) - parseInt($(this).css("margin-bottom")) - parseInt($(this).css("margin-top")));
+        //        } catch (e) {
+        //            console.log(e.message);
+        //        } 
                
-            });
-                windowsPrevH = $(window).height();
-            }
+        //    });
+        //        windowsPrevH = $(window).height();
+        //    }
             
-        }
+        //}
        
     </script>
    
