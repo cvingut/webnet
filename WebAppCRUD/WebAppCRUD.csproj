@@ -98,16 +98,19 @@
     <Content Include="Aplicacion\Images\grd_alt.png" />
     <Content Include="Aplicacion\Images\grd_head.png" />
     <Content Include="Aplicacion\Images\grd_pgr.png" />
+    <Content Include="Aplicacion\Pages\ChipsetUpdateDevice.aspx" />
     <Content Include="Aplicacion\Pages\Listar.aspx" />
     <Content Include="Aplicacion\Pages\WebForm1.aspx" />
     <Content Include="Aplicacion\Styles\General.css" />
     <Content Include="Aplicacion\Styles\MyGridView.css" />
+    <Content Include="Aplicacion\Styles\Chipset.css" />
     <Content Include="App_Data\DB.sdf" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Aplicacion\General.Master" />
+    <Content Include="Aplicacion\Chipset.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -121,6 +124,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aplicacion\Chipset.Master.cs">
+      <DependentUpon>Chipset.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicacion\Chipset.Master.designer.cs">
+      <DependentUpon>Chipset.Master</DependentUpon>
+    </Compile>
     <Compile Include="Aplicacion\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -134,6 +144,13 @@
     </Compile>
     <Compile Include="Aplicacion\General.Master.designer.cs">
       <DependentUpon>General.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicacion\Pages\ChipsetUpdateDevice.aspx.cs">
+      <DependentUpon>ChipsetUpdateDevice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicacion\Pages\ChipsetUpdateDevice.aspx.designer.cs">
+      <DependentUpon>ChipsetUpdateDevice.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aplicacion\Pages\Listar.aspx.cs">
       <DependentUpon>Listar.aspx</DependentUpon>

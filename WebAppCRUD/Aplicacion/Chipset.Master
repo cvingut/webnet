@@ -1,0 +1,85 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Chipset.master.cs" Inherits="WebAppCRUD.Aplicacion.Chipset" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <link href="Styles/Chipset.css" rel="stylesheet" type="text/css" />
+
+    <title>
+        <asp:ContentPlaceHolder ID="title" runat="server">
+            <%-- Título --%>
+        </asp:ContentPlaceHolder>
+    </title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+        <%-- Cabecera de la página --%>
+       
+    </asp:ContentPlaceHolder>
+</head>
+<body id="MainContent" class="container-fluid" style="padding:8px;margin:0px;">
+    <div  class="panel panel-default" style="padding:0px;margin:0px;min-height:100%">
+        <asp:ContentPlaceHolder ID="main" runat="server" EnableViewState="true" >
+            <%-- Contenido de la página --%>
+        </asp:ContentPlaceHolder>
+    </div>
+
+    <script>  
+        var windowsPrevH;
+        $(window).resize(function () {
+           
+            //$("#MainContent").height($(window).height() - parseInt($("#MainContent").css("padding-bottom")) - parseInt($("#MainContent").css("padding-top")));
+            resizeFitHeightObjects();            
+            //$("#MainContent").css('min-height', '100%');
+        },500);
+        $(document).ready(function () {
+            windowsPrevH = $(window).height();
+            $("#MainContent").height($(window).height() - parseInt($("#MainContent").css("padding-bottom")) - parseInt($("#MainContent").css("padding-top")));
+            resizeFitHeightObjects();
+            //$("#MainContent").css('min-height', '100%');
+        });
+
+        //$('.panel').on('resize', function () {
+        //    resizeFitHeightObjects();
+        //});
+
+        //$('#MainContent').bind('resize', function () {
+        //    console.log( 'Height changed to' + $(this).height() );
+        //}).trigger('resize');
+
+        function resizeFitHeightObjects() {
+            if (windowsPrevH!==null) {
+
+            
+            var dif = $(window).height()- windowsPrevH;
+            $("div").each(function (i) {
+                //obj = this;
+                try {
+                    $(this).height($(this).parent().height() + dif - parseInt($(this).css("padding-bottom")) - parseInt($(this).css("padding-top")) - parseInt($(this).css("margin-bottom")) - parseInt($(this).css("margin-top")));
+                } catch (e) {
+                    console.log(e.message);
+                } 
+               
+            });
+                windowsPrevH = $(window).height();
+            }
+            
+        }
+       
+    </script>
+   
+</body>
+
+
+</html>
