@@ -35,7 +35,7 @@ namespace WebAppCRUD.Aplicacion.Pages
 
         public void LoadChipsets() {
 
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 20; i++)
             {
                 HtmlChipset(i);               
             }
@@ -62,6 +62,8 @@ namespace WebAppCRUD.Aplicacion.Pages
                 chipsetActiveStatus.Controls.Add(active);
 
                 chipset.Controls.Add(chipsetActiveStatus);
+
+                chipset.Controls.Add(HtmlData(null));
                 gpContent.Controls.Add(chipset);
             }
             else
@@ -101,8 +103,93 @@ namespace WebAppCRUD.Aplicacion.Pages
 
         public HtmlGenericControl HtmlData(DataSet data ) {
 
+            HtmlGenericControl chipset_data = new HtmlGenericControl("DIV");
+            chipset_data.Attributes.Add("class", "chipset_data");
 
-            return new HtmlGenericControl("DIV");
+            #region Create ImgChipset
+            HtmlGenericControl tumbImg = new HtmlGenericControl("DIV");
+            tumbImg.Attributes.Add("class", "thumbnail ctn_Img_Chipset");
+            HtmlImage img = new HtmlImage();
+            img.Src = "http://es.seaicons.com/wp-content/uploads/2015/11/Apps-Audio-Card-icon.png";
+            img.Alt = "Chipset";
+
+            tumbImg.Controls.Add(img);
+
+            #endregion
+
+            chipset_data.Controls.Add(tumbImg);
+
+            #region Create Content Data Chipset
+            HtmlGenericControl content_data = new HtmlGenericControl("DIV");
+            content_data.Attributes.Add("class", "content_data");
+
+            HtmlGenericControl content_group_data = new HtmlGenericControl("DIV");
+            content_group_data.Attributes.Add("class", "content_group_data");
+
+            for (int i = 0; i < 14; i++)
+            {
+                addChipsetGroupToChipsetData(i, content_group_data);
+            }
+
+            content_data.Controls.Add(content_group_data);
+
+            #endregion
+            chipset_data.Controls.Add(content_data);
+
+            return chipset_data;
+        }
+
+        public void addChipsetGroupToChipsetData(int idChipset, HtmlGenericControl group_data) {
+            HtmlGenericControl chipset_group_spec = new HtmlGenericControl("DIV");
+            chipset_group_spec.Attributes.Add("class", "chipset_group_spec");
+
+            HtmlGenericControl group_name = new HtmlGenericControl("DIV");
+            group_name.Attributes.Add("class", "group_name");
+
+            Label lbGruopName = new Label();
+            //lbGruopName.ID = "name_group_"+idChipset.ToString();
+            lbGruopName.Text = "Name Group "+ idChipset.ToString();
+            group_name.Controls.Add(lbGruopName);
+            chipset_group_spec.Controls.Add(group_name);
+
+            HtmlGenericControl content_specs_group = new HtmlGenericControl("DIV");
+            content_specs_group.Attributes.Add("class", "content_specs_group");
+
+            for (int i = 0; i < 24; i++)
+            {
+                addSpecChipsetToGroup(i, content_specs_group);
+            }
+
+            chipset_group_spec.Controls.Add(content_specs_group);
+            group_data.Controls.Add(chipset_group_spec);
+        }
+
+
+        public void addSpecChipsetToGroup(int idChipset, HtmlGenericControl content_specs_group) {
+            HtmlGenericControl spec_chipset = new HtmlGenericControl("DIV");
+            spec_chipset.Attributes.Add("class", "spec_chipset");
+
+            HtmlGenericControl spec_name = new HtmlGenericControl("DIV");
+            spec_name.Attributes.Add("class", "spec_name");
+            Label lbSpect = new Label();
+            lbSpect.Text = "Name spec" + idChipset.ToString();
+            //lbSpect.ID= "chipset_spec_name_"+ idChipset.ToString();
+            lbSpect.CssClass = "chipset_spec_name";
+            spec_name.Controls.Add(lbSpect);
+
+            HtmlGenericControl spec_value = new HtmlGenericControl("DIV");
+            spec_value.Attributes.Add("class", "spec_value");
+            Label lbSpectv = new Label();
+            lbSpectv.Text = "Value spec" + idChipset.ToString();
+            //lbSpectv.ID = "chipset_spec_value" + idChipset.ToString();
+            lbSpectv.CssClass = "chipset_spec_value";
+            spec_value.Controls.Add(lbSpectv);
+
+
+            spec_chipset.Controls.Add(spec_name);
+            spec_chipset.Controls.Add(spec_value);
+
+            content_specs_group.Controls.Add(spec_chipset);
 
         }
 

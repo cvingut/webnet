@@ -159,7 +159,7 @@
 
         .content_data {
             position: relative;
-            height: 310px;
+            height: 250px;
             overflow-y: auto;
         }
 
@@ -188,6 +188,10 @@
             border:none;
             background:none;
             margin:5px;
+        }
+        .ctn_Img_Chipset {
+            margin:20px;
+            background-color:transparent;
         }
 
         /*
