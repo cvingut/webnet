@@ -99,8 +99,8 @@
     <Content Include="Aplicacion\Images\grd_head.png" />
     <Content Include="Aplicacion\Images\grd_pgr.png" />
     <Content Include="Aplicacion\Pages\ChipsetUpdateDevice.aspx" />
+    <Content Include="Aplicacion\Pages\GridChipset.aspx" />
     <Content Include="Aplicacion\Pages\Listar.aspx" />
-    <Content Include="Aplicacion\Pages\WebForm1.aspx" />
     <Content Include="Aplicacion\Styles\General.css" />
     <Content Include="Aplicacion\Styles\MyGridView.css" />
     <Content Include="Aplicacion\Styles\Chipset.css" />
@@ -131,6 +131,8 @@
     <Compile Include="Aplicacion\Chipset.Master.designer.cs">
       <DependentUpon>Chipset.Master</DependentUpon>
     </Compile>
+    <Compile Include="Aplicacion\Class\Chipset.cs" />
+    <Compile Include="Aplicacion\Class\GridChipset.cs" />
     <Compile Include="Aplicacion\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -152,19 +154,19 @@
     <Compile Include="Aplicacion\Pages\ChipsetUpdateDevice.aspx.designer.cs">
       <DependentUpon>ChipsetUpdateDevice.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Aplicacion\Pages\GridChipset.aspx.cs">
+      <DependentUpon>GridChipset.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicacion\Pages\GridChipset.aspx.designer.cs">
+      <DependentUpon>GridChipset.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Aplicacion\Pages\Listar.aspx.cs">
       <DependentUpon>Listar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aplicacion\Pages\Listar.aspx.designer.cs">
       <DependentUpon>Listar.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Aplicacion\Pages\WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Aplicacion\Pages\WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
