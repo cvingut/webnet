@@ -33,7 +33,7 @@ namespace WebAppCRUD.Aplicacion.Pages
 
             for (int i = 0; i < 6; i++)
             {
-                this.HtmlChipset("<div class='"+((i==0)? "active-chipset" : "inactive-chipset") + "' style=''>"+ i.ToString() +"</div><p> Contenido de los Chipset... </p>");
+                this.HtmlChipset("<div class='gp_ch_controls'><div class='"+((i==0)? "active-chipset" : "inactive-chipset") + "'><span>"+ i.ToString() + "</span></div> <span class='glyphicon glyphicon-transfer' style='float:right'></span>Apply to<br>device</div><p> Contenido de los Chipset... </p>");
             }
 
         }
@@ -41,6 +41,7 @@ namespace WebAppCRUD.Aplicacion.Pages
         public void HtmlChipset(string data) {
 
             HtmlGenericControl gpContent =gridChipset_Content;
+            
             if (gpContent != null)
             {
                 HtmlGenericControl chipset = new HtmlGenericControl("DIV");

@@ -25,6 +25,7 @@
             height: 467px;
             min-height: 100%;
             border-left: 1px solid gainsboro;
+            padding-right: 0px;
         }
 
         #custom-search-input .search-query {
@@ -129,8 +130,13 @@
         }
         .content_data {
             position:relative;
-            height:98%;
+            height:310px;
             overflow-y:auto;
+        }
+        .gp_ch_controls {
+            display:inline-flex;
+               position: relative;
+               width: 100%;
         }
     </style>
 </asp:Content>
