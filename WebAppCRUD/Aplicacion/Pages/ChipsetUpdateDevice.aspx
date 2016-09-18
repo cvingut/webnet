@@ -3,7 +3,8 @@
 <asp:Content ID="ContentTitle" ContentPlaceHolderID="title" runat="server">
     Update Device Chipset
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
+
+<asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .ctnDevice {
             margin: 10px;
@@ -23,6 +24,7 @@
         .chipsetDevice {
             height: 467px;
             min-height: 100%;
+            border-left: 1px solid gainsboro;
         }
 
         #custom-search-input .search-query {
@@ -49,10 +51,6 @@
             left: -39px;
         }
 
-        /*#imaginary_container {
-            /*margin-top: 20%;*/ /* Don't copy this */
-        }*/
-
         .stylish-input-group .input-group-addon {
             background: white !important;
         }
@@ -67,9 +65,77 @@
             border: 0;
             background: transparent;
         }
+
+        .gp_column {
+            position: relative;
+            height: 100%;
+            width: 180px;
+            border: 1px solid lightgrey;
+            padding: 5px;
+            margin: 5px;
+            background-color: rgba(204, 204, 204, 0.33);
+        }
+
+        .active-chipset {
+            position: inherit;
+            width: 0;
+            height: 0;
+            left: -6px;
+            top: -6px;
+            border-right: 15px solid transparent;
+            border-top: 15px solid #2e9b00;
+            border-left: 15px solid #2e9b00;
+            border-bottom: 15px solid transparent;
+        }
+
+        .inactive-chipset {
+            position: inherit;
+            width: 0;
+            height: 0;
+            left: -6px;
+            top: -6px;
+            border-right: 15px solid transparent;
+            border-top: 15px solid #d7523f;
+            border-left: 15px solid #d7523f;
+            border-bottom: 15px solid transparent;
+        }
+
+        .spec_chipset {
+            display: inline-block;
+        }
+
+        .chipset_group_spec {
+            /*font-style: oblique ;*/
+            padding: 5px;
+        }
+
+        .content_specs_group {
+            border-top: 2px solid gainsboro;
+            padding: 5px;
+        }
+
+        .spec_chipset {
+            width: 100%;
+            border-bottom: 1px dotted gainsboro;
+        }
+
+        .spec_name {
+            font-weight: bold;
+        }
+
+        .group_name {
+            font-style: italic;
+            color: burlywood;
+        }
+        .content_data {
+            position:relative;
+            height:98%;
+            overflow-y:auto;
+        }
     </style>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="main" runat="server">
+
+<asp:Content ID="MainContent" ContentPlaceHolderID="main" runat="server">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -77,31 +143,20 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div style="background-color: gainsboro; height: auto; padding: 5px 10px 5px 10px">
-                                 <%--<div id="imaginary_container">--%>
-                                    <div class="input-group stylish-input-group">
-                                        <input type="text" class="form-control" placeholder="Search">
-                                        <span class="input-group-addon">
-                                            <button type="submit">
-                                                <span class="glyphicon glyphicon-search"></span>
-                                            </button>
-                                        </span>
-                                    </div>
-                               <%-- </div>--%>
-                                <%--<div id="custom-search-input" class="input-group col-md-12">
-                                    <input type="text" class="search-query form-control" placeholder="Search" aria-label="Device" />
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-danger" type="button">
-                                            <span class=" glyphicon glyphicon-search"></span>
+                                <div class="input-group stylish-input-group">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                    <span class="input-group-addon">
+                                        <button type="submit">
+                                            <span class="glyphicon glyphicon-search"></span>
                                         </button>
                                     </span>
-                                </div>--%>
-
-                               
+                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <h2>
-                                <asp:Label ID="lbTerminalName" runat="server" Text="Terminal Name" ToolTip="Terminal Name"></asp:Label></h2>
+                                <asp:Label ID="lbTerminalName" runat="server" Text="Terminal Name" ToolTip="Terminal Name"></asp:Label>
+                            </h2>
 
                         </div>
                         <div class="container-fluid">
@@ -109,7 +164,198 @@
 
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 propDevice">
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 chipsetDevice" style="border-left: 1px solid gainsboro">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 chipsetDevice">
+                                    <div class="chipset_data">
+
+                                        <a href="#" class="thumbnail" style="margin: 20px">
+                                            <img src="http://es.seaicons.com/wp-content/uploads/2015/11/Apps-Audio-Card-icon.png" alt="Chipset">
+                                        </a>
+                                        <div class="content_data">
+                                            <div class="content_group_data">
+
+                                                <div class="chipset_group_spec">
+                                                    <div class="group_name">
+                                                        <asp:Label ID="name_group_n" runat="server" Text="Name Group"></asp:Label>
+                                                    </div>
+                                                    <div class="content_specs_group">
+                                                        <div class="spec_chipset">
+                                                            <div class="spec_name">
+                                                                <asp:Label ID="chipset_spec_name_idspec" runat="server" Text="Name Spec" CssClass="chipset_spec_name"></asp:Label>
+                                                            </div>
+                                                            <div class="spec_value">
+                                                                <asp:Label ID="chipset_spec_value_idspec" runat="server" Text="Spec Value" CssClass="chipset_spec_value"></asp:Label>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="spec_chipset">
+                                                            <div class="spec_name">
+                                                                <asp:Label ID="Label1" runat="server" Text="Name Spec" CssClass="chipset_spec_name"></asp:Label>
+                                                            </div>
+                                                            <div class="spec_value">
+                                                                <asp:Label ID="Label2" runat="server" Text="Spec Value" CssClass="chipset_spec_value"></asp:Label>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="spec_chipset">
+                                                            <div class="spec_name">
+                                                                <asp:Label ID="Label3" runat="server" Text="Name Spec" CssClass="chipset_spec_name"></asp:Label>
+                                                            </div>
+                                                            <div class="spec_value">
+                                                                <asp:Label ID="Label4" runat="server" Text="Spec Value" CssClass="chipset_spec_value"></asp:Label>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="chipset_group_spec">
+                                                    <div class="group_name">
+                                                        <asp:Label ID="Label5" runat="server" Text="Name Group"></asp:Label>
+                                                    </div>
+                                                    <div class="content_specs_group">
+                                                        <div class="spec_chipset">
+                                                            <div class="spec_name">
+                                                                <asp:Label ID="Label6" runat="server" Text="Name Spec" CssClass="chipset_spec_name"></asp:Label>
+                                                            </div>
+                                                            <div class="spec_value">
+                                                                <asp:Label ID="Label7" runat="server" Text="Spec Value" CssClass="chipset_spec_value"></asp:Label>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="spec_chipset">
+                                                            <div class="spec_name">
+                                                                <asp:Label ID="Label8" runat="server" Text="Name Spec" CssClass="chipset_spec_name"></asp:Label>
+                                                            </div>
+                                                            <div class="spec_value">
+                                                                <asp:Label ID="Label9" runat="server" Text="Spec Value" CssClass="chipset_spec_value"></asp:Label>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="spec_chipset">
+                                                            <div class="spec_name">
+                                                                <asp:Label ID="Label10" runat="server" Text="Name Spec" CssClass="chipset_spec_name"></asp:Label>
+                                                            </div>
+                                                            <div class="spec_value">
+                                                                <asp:Label ID="Label11" runat="server" Text="Spec Value" CssClass="chipset_spec_value"></asp:Label>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="chipset_group_spec">
+                                                    <div class="group_name">
+                                                        <asp:Label ID="Label12" runat="server" Text="Name Group"></asp:Label>
+                                                    </div>
+                                                    <div class="content_specs_group">
+                                                        <div class="spec_chipset">
+                                                            <div class="spec_name">
+                                                                <asp:Label ID="Label13" runat="server" Text="Name Spec" CssClass="chipset_spec_name"></asp:Label>
+                                                            </div>
+                                                            <div class="spec_value">
+                                                                <asp:Label ID="Label14" runat="server" Text="Spec Value" CssClass="chipset_spec_value"></asp:Label>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="spec_chipset">
+                                                            <div class="spec_name">
+                                                                <asp:Label ID="Label15" runat="server" Text="Name Spec" CssClass="chipset_spec_name"></asp:Label>
+                                                            </div>
+                                                            <div class="spec_value">
+                                                                <asp:Label ID="Label16" runat="server" Text="Spec Value" CssClass="chipset_spec_value"></asp:Label>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="spec_chipset">
+                                                            <div class="spec_name">
+                                                                <asp:Label ID="Label17" runat="server" Text="Name Spec" CssClass="chipset_spec_name"></asp:Label>
+                                                            </div>
+                                                            <div class="spec_value">
+                                                                <asp:Label ID="Label18" runat="server" Text="Spec Value" CssClass="chipset_spec_value"></asp:Label>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="chipset_group_spec">
+                                                    <div class="group_name">
+                                                        <asp:Label ID="Label19" runat="server" Text="Name Group"></asp:Label>
+                                                    </div>
+                                                    <div class="content_specs_group">
+                                                        <div class="spec_chipset">
+                                                            <div class="spec_name">
+                                                                <asp:Label ID="Label20" runat="server" Text="Name Spec" CssClass="chipset_spec_name"></asp:Label>
+                                                            </div>
+                                                            <div class="spec_value">
+                                                                <asp:Label ID="Label21" runat="server" Text="Spec Value" CssClass="chipset_spec_value"></asp:Label>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="spec_chipset">
+                                                            <div class="spec_name">
+                                                                <asp:Label ID="Label22" runat="server" Text="Name Spec" CssClass="chipset_spec_name"></asp:Label>
+                                                            </div>
+                                                            <div class="spec_value">
+                                                                <asp:Label ID="Label23" runat="server" Text="Spec Value" CssClass="chipset_spec_value"></asp:Label>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="spec_chipset">
+                                                            <div class="spec_name">
+                                                                <asp:Label ID="Label24" runat="server" Text="Name Spec" CssClass="chipset_spec_name"></asp:Label>
+                                                            </div>
+                                                            <div class="spec_value">
+                                                                <asp:Label ID="Label25" runat="server" Text="Spec Value" CssClass="chipset_spec_value"></asp:Label>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="chipset_group_spec">
+                                                    <div class="group_name">
+                                                        <asp:Label ID="Label26" runat="server" Text="Name Group"></asp:Label>
+                                                    </div>
+                                                    <div class="content_specs_group">
+                                                        <div class="spec_chipset">
+                                                            <div class="spec_name">
+                                                                <asp:Label ID="Label27" runat="server" Text="Name Spec" CssClass="chipset_spec_name"></asp:Label>
+                                                            </div>
+                                                            <div class="spec_value">
+                                                                <asp:Label ID="Label28" runat="server" Text="Spec Value" CssClass="chipset_spec_value"></asp:Label>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="spec_chipset">
+                                                            <div class="spec_name">
+                                                                <asp:Label ID="Label29" runat="server" Text="Name Spec" CssClass="chipset_spec_name"></asp:Label>
+                                                            </div>
+                                                            <div class="spec_value">
+                                                                <asp:Label ID="Label30" runat="server" Text="Spec Value" CssClass="chipset_spec_value"></asp:Label>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="spec_chipset">
+                                                            <div class="spec_name">
+                                                                <asp:Label ID="Label31" runat="server" Text="Name Spec" CssClass="chipset_spec_name"></asp:Label>
+                                                            </div>
+                                                            <div class="spec_value">
+                                                                <asp:Label ID="Label32" runat="server" Text="Spec Value" CssClass="chipset_spec_value"></asp:Label>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
                                 </div>
 
                             </div>
@@ -118,7 +364,9 @@
                 </div>
             </div>
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                <div class="panel  panel-default ctnDevice">
+                <div id="gridChipset" runat="server" class="panel  panel-default ctnDevice" style="overflow-x: auto;">
+                    <div id="gridChipset_Content" class="row_content" runat="server" style="display: inline-flex; height: 98%; width: auto;">
+                    </div>
                 </div>
             </div>
         </div>
