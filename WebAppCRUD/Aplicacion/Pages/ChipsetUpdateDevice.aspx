@@ -6,35 +6,15 @@
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
-        .ctnDevice {
-            margin: 10px;
-            padding: 10px;
-            height: 600px;
-        }
-
-        h2 {
-            text-align: center;
-        }
-
-        .propDevice {
-            height: 467px;
-            min-height: 100%;
-        }
-
-        .chipsetDevice {
-            height: 467px;
-            min-height: 100%;
-            border-left: 1px solid gainsboro;
-            padding-right: 0px;
-        }
-
+        /*
+            ---------------- SEARCH COMPONENT ----------------------
+        */
         #custom-search-input .search-query {
             margin-bottom: 0;
             -webkit-border-radius: 3px;
             -moz-border-radius: 3px;
             border-top-left-radius: 3px;
         }
-
 
         #custom-search-input button {
             padding-top: 4px;
@@ -66,6 +46,51 @@
             border: 0;
             background: transparent;
         }
+        /*
+            ----------------  END SEARCH COMPONENT ----------------------
+        */
+
+
+        /*
+            ------------------- FRAMEWORK COMPONENT ---------------------
+        */
+        .ctnDevice {
+            margin: 10px;
+            padding: 10px;
+            height: 600px;
+        }
+
+        .ctnChipset {
+            margin: 10px;
+            padding: 10px;
+            height: 532px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .propDevice {
+            height: 467px;
+            min-height: 100%;
+        }
+
+        .chipsetDevice {
+            height: 467px;
+            min-height: 100%;
+            border-left: 1px solid gainsboro;
+            padding-right: 0px;
+        }
+
+        /*
+            ------------------- END FRAMEWORK COMPONENT ---------------------
+        */
+
+
+
+        /*
+            ---------------------------- GRID PANEL ---------------------------
+        */
 
         .gp_column {
             position: relative;
@@ -91,6 +116,7 @@
 
         .inactive-chipset {
             position: inherit;
+            /*display:none;*/
             width: 0;
             height: 0;
             left: -6px;
@@ -99,6 +125,8 @@
             border-top: 15px solid #d7523f;
             border-left: 15px solid #d7523f;
             border-bottom: 15px solid transparent;
+            border-top: 15px solid transparent;
+            border-left: 15px solid transparent;
         }
 
         .spec_chipset {
@@ -128,16 +156,43 @@
             font-style: italic;
             color: burlywood;
         }
+
         .content_data {
-            position:relative;
-            height:310px;
-            overflow-y:auto;
+            position: relative;
+            height: 310px;
+            overflow-y: auto;
         }
+
         .gp_ch_controls {
-            display:inline-flex;
-               position: relative;
-               width: 100%;
+            display: inline-flex;
+            position: relative;
+            width: 100%;
         }
+
+        .toolbar {
+            height: 48px;
+            margin: 10px;
+            padding: 5px;
+        }
+        .separator {
+            float:right;
+            border:none;
+            border-left:1px solid gainsboro;
+            margin:5px;         
+            width:0px;
+            padding:0px;
+            float:right;
+        }
+        .toolbar_btn_ch {
+            float:right;
+            border:none;
+            background:none;
+            margin:5px;
+        }
+
+        /*
+            ---------------------------- END GRID PANEL ---------------------------
+        */
     </style>
 </asp:Content>
 
@@ -370,8 +425,28 @@
                 </div>
             </div>
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                <div id="gridChipset" runat="server" class="panel  panel-default ctnDevice" style="overflow-x: auto;">
-                    <div id="gridChipset_Content" class="row_content" runat="server" style="display: inline-flex; height: 98%; width: auto;">
+                <div class="row">
+                    <div class="panel panel-default toolbar">
+                        <form runat="server" method="post" style="height:40px">
+                            <div class="input-group stylish-input-group" style="width:100%">
+                                    <input type="text" class="form-control" placeholder="Search" title="Chipset">
+                                    <span class="input-group-addon">
+                                        <button type="submit">
+                                            <span class="glyphicon glyphicon-search"></span>
+                                        </button>
+                                    </span>
+                                 <asp:Button ID="btnAcept" Text="Accept" runat="server" CssClass="toolbar_btn_ch" />
+                                 <asp:Button runat="server" CssClass="separator" Enabled="false"/>
+                                 <asp:Button ID="btnCancel" Text="Cancel" runat="server" CssClass="toolbar_btn_ch" />
+                             </div>
+                           
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="gridChipset" runat="server" class="panel  panel-default ctnChipset" style="overflow-x: auto;">
+                        <div id="gridChipset_Content" class="row_content" runat="server" style="display: inline-flex; height: 98%; width: auto;">
+                        </div>
                     </div>
                 </div>
             </div>
