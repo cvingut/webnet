@@ -15,7 +15,9 @@ namespace WebAppCRUD.Aplicacion.Class
         public string ImageAlt { get; set; }
         public bool active { get; set; }
         public int position { get; set; }
-        public DataRow Data { get; set; }
+        public DataTable Data { get; set; }
+        public string IdChipsetKey { get; set; }
+        public string IdGroupKey { get; set; }
         public int idChipset { get; set; }
         public List<Control> Controls { get; set; }
         public HtmlGenericControl HtmlChipsetControl { get; set; }
@@ -41,7 +43,10 @@ namespace WebAppCRUD.Aplicacion.Class
             cssClassContentDataChipset = "content_data";
             cssClassContentDataSpecChipset = "content_group_data";
             cssClassContentImgChipset = "ctn_Img_Chipset";
+            IdChipsetKey = "idChipset";
+            IdGroupKey = "idGroup";
             ImageUrl = "http://es.seaicons.com/wp-content/uploads/2015/11/Apps-Audio-Card-icon.png";
+            //idChipset = (int)Data.Rows[0][IdChipsetKey];
 
         }
 
@@ -63,6 +68,31 @@ namespace WebAppCRUD.Aplicacion.Class
             HtmlGenericControl content_group_data = new HtmlGenericControl("DIV");
             content_group_data.Attributes.Add("class", cssClassContentDataSpecChipset);
 
+            int Group=-1;
+            HtmlGenericControl chipset_group_spec = null ;
+            HtmlGenericControl group_name=null;
+            foreach (DataRow spec in Data.Rows)
+            {
+                if (Group != (int)spec[IdGroupKey])
+                {
+                    chipset_group_spec = new HtmlGenericControl("DIV");
+                    chipset_group_spec.Attributes.Add("class", "chipset_group_spec");
+
+                    group_name = new HtmlGenericControl("DIV");
+                    group_name.Attributes.Add("class", "group_name");
+
+                    Label lbGruopName = new Label();
+                    //lbGruopName.ID = "name_group_"+idChipset.ToString();
+                    lbGruopName.Text = "";
+                    group_name.Controls.Add(lbGruopName);
+                    chipset_group_spec.Controls.Add(group_name);
+                    Group = (int)spec[IdGroupKey];
+                }
+
+
+
+            }
+           
 
 
 
