@@ -99,7 +99,7 @@
             border: 1px solid lightgrey;
             padding: 5px;
             margin: 5px;
-            background-color: rgba(204, 204, 204, 0.33);
+            background-color: rgba(245, 245, 245, 0.60);
         }
 
         .active-chipset {
@@ -125,28 +125,37 @@
             border-top: 15px solid #d7523f;
             border-left: 15px solid #d7523f;
             border-bottom: 15px solid transparent;
+            /*Para que no se muestre*/
             border-top: 15px solid transparent;
             border-left: 15px solid transparent;
         }
 
-        .spec_chipset {
-            display: inline-block;
-        }
+            .inactive-chipset:hover {
+                border-top: 15px solid #d7523f;
+                border-left: 15px solid #d7523f;
+            }
 
         .chipset_group_spec {
-            /*font-style: oblique ;*/
             padding: 5px;
         }
 
         .content_specs_group {
-            border-top: 2px solid gainsboro;
+            border-top: 2px solid #cccedb;
             padding: 5px;
         }
 
         .spec_chipset {
             width: 100%;
-            border-bottom: 1px dotted gainsboro;
+            border-bottom: 1px dotted #cccedb;
+            display: inline-block;
+            -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
         }
+
+            .spec_chipset:hover {
+                background-color: rgba(195, 195, 195, 0.93);
+                cursor: pointer;
+            }
 
         .spec_name {
             font-weight: bold;
@@ -174,25 +183,33 @@
             margin: 10px;
             padding: 5px;
         }
+
         .separator {
-            float:right;
-            border:none;
-            border-left:1px solid gainsboro;
-            margin:5px;         
-            width:0px;
-            padding:0px;
-            float:right;
+            float: right;
+            border: none;
+            border-left: 1px solid gainsboro;
+            margin: 5px;
+            width: 0px;
+            padding: 0px;
+            float: right;
         }
+
         .toolbar_btn_ch {
-            float:right;
-            border:none;
-            background:none;
-            margin:5px;
+            float: right;
+            border: none;
+            background: none;
+            margin: 5px;
         }
+
         .ctn_Img_Chipset {
-            margin:20px;
-            background-color:transparent;
+            margin: 20px;
+            background-color: transparent;
         }
+
+        .Spec_Selected {
+            background-color: rgba(195, 195, 195, 0.93);
+        }
+
 
         /*
             ---------------------------- END GRID PANEL ---------------------------
@@ -431,27 +448,41 @@
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                 <div class="row">
                     <div class="panel panel-default toolbar">
-                        <form runat="server" method="post" style="height:40px">
-                            <div class="input-group stylish-input-group" style="width:100%">
-                                    <input type="text" class="form-control" placeholder="Search" title="Chipset">
-                                    <span class="input-group-addon">
-                                        <button type="submit">
-                                            <span class="glyphicon glyphicon-search"></span>
-                                        </button>
-                                    </span>
-                                 <asp:Button ID="btnAcept" Text="Accept" runat="server" CssClass="toolbar_btn_ch" />
-                                 <asp:Button runat="server" CssClass="separator" Enabled="false"/>
-                                 <asp:Button ID="btnCancel" Text="Cancel" runat="server" CssClass="toolbar_btn_ch" />
-                             </div>
-                           
-                        </form>
+                       <%-- <form runat="server" method="post" style="height: 40px">     --%>                      
+                            <div class="input-group stylish-input-group" style="width: 100%">
+                                <input type="text" class="form-control" placeholder="Search" title="Chipset">
+                                <span class="input-group-addon">
+                                    <button type="submit">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                                <asp:Button runat="server" ID="btn_Page_Next" Text="Next >" OnClick="btn_Page_Next_Click" />
+                                <asp:Button runat="server" ID="btn_Page_Back" Text="Back >" OnClick="btn_Page_Back_Click" />
+                                <asp:Button runat="server" ID="btn_Page_GoTo" Text="2 >" OnClick="btn_Page_GoTo_Click" />
+                                <asp:Button ID="btnAcept" Text="Accept" runat="server" CssClass="toolbar_btn_ch" />
+                                <asp:Button runat="server" CssClass="separator" Enabled="false" />
+                                <asp:Button ID="btnCancel" Text="Cancel" runat="server" CssClass="toolbar_btn_ch" />
+                            </div>
+
+                      <%--  </form>--%>
                     </div>
                 </div>
                 <div class="row">
-                    <div id="gridChipset" runat="server" class="panel  panel-default ctnChipset" style="overflow-x: auto;">
-                        <div id="gridChipset_Content" class="row_content" runat="server" style="display: inline-flex; height: 98%; width: auto;">
-                        </div>
-                    </div>
+                    <%--<form runat="server" method="post">--%>
+                        <asp:ScriptManager ID="ScriptManager1" runat="server">
+                        </asp:ScriptManager>
+                        <asp:UpdatePanel ID="upGridPanel" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+                                <div id="gridChipset" runat="server" class="panel  panel-default ctnChipset" style="overflow-x: auto;">
+                                    <div id="gridChipset_Content" class="row_content" runat="server" style="display: inline-flex; height: 98%; width: auto;">
+                                    </div>
+                                </div>
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="btn_Page_Next" EventName="Click" />
+                            </Triggers>
+                        </asp:UpdatePanel>
+                    <%--</form>--%>
                 </div>
             </div>
         </div>

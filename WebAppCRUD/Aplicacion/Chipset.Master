@@ -30,12 +30,21 @@
 </head>
 <body id="MainContent" class="container-fluid" style="padding:8px;margin:0px;">
     <div  class="panel panel-default" style="padding:0px;margin:0px;min-height:100%;">
+        <form id="fcontent" runat="server" method="post">
         <asp:ContentPlaceHolder ID="main" runat="server" EnableViewState="true">
             <%-- Contenido de la página --%>
         </asp:ContentPlaceHolder>
+            </form>
     </div>
 
     <script>  
+
+        function specActionClick(element,id) {
+            var classElement = $(element).attr("class");
+            classElement = "." + classElement.replace(' ', '.');
+            $(".Spec_Selected").removeClass("Spec_Selected");
+            $(classElement).addClass("Spec_Selected");
+        }
 //        $grid-columns:      12;
 //        $grid-gutter-width: 30px;
 

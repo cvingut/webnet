@@ -12,30 +12,41 @@ namespace WebAppCRUD.Aplicacion.Pages
     public partial class ChipsetUpdateDevice : Page
     {
         private bool active;
+
+        bool Paging = true;
+        int Limit = 50;
+        int Offset = 0;
+        int Total = 2000;
+        int pActualPage;
+        int contentOverflow = -1;
         protected void Page_Load(object sender, EventArgs e)
         {
-            //HtmlGenericControl NewDiv = new
-            //HtmlGenericControl();
-            //NewDiv.ID = "divcreated";
+            if (!Page.IsPostBack)
+            {
+                this.active = true;
 
-            //HtmlGenericControl createDiv =
-            //new HtmlGenericControl("DIV");
-            //createDiv.ID = "createDiv";
-            //createDiv.Attributes.
-            //createDiv.Style.Add(HtmlTextWriterStyle.BackgroundColor, "Yellow");
-            //createDiv.Style.Add(HtmlTextWriterStyle.Color, "Red");
-            //createDiv.Style.Add(HtmlTextWriterStyle.Height, "100px");
-            //createDiv.Style.Add(HtmlTextWriterStyle.Width, "400px");
-            //createDiv.InnerHtml = " I'm a div, from code behind ";
-            //this.Controls.Add(createDiv);
-            this.active = true;
+                this.LoadChipsets();
+            }
+           
+        }
 
-            this.LoadChipsets();
+        public void NextPage() {
+            Offset += Limit;
+            Offset = (Total - Offset < 0) ? Offset + (Total - Offset) : Offset;
+        }
+
+        public void BackPage() {
+            Offset-=(Offset - Limit <= 0) ? 0 : Limit;
+        }
+
+        public void GoToPage(int Page) {
+            Offset = Page * Limit - Limit;
         }
 
         public void LoadChipsets() {
 
-            for (int i = 0; i < 20; i++)
+            gridChipset_Content.Controls.Clear();
+            for (int i = Offset; i < Limit+Offset; i++)
             {
                 HtmlChipset(i);               
             }
@@ -49,6 +60,7 @@ namespace WebAppCRUD.Aplicacion.Pages
             
             if (gpContent != null)
             {
+                
                 HtmlGenericControl chipset = new HtmlGenericControl("DIV");
                 chipset.Attributes.Add("class", "gp_column");
 
@@ -65,12 +77,13 @@ namespace WebAppCRUD.Aplicacion.Pages
 
                 chipset.Controls.Add(HtmlData(null));
                 gpContent.Controls.Add(chipset);
+               
             }
             else
             {
                 //Notificar que no se encontró 
             }
-            
+            gpContent.DataBind();
         }
 
         public HtmlGenericControl HtmlControls() {
@@ -167,7 +180,8 @@ namespace WebAppCRUD.Aplicacion.Pages
 
         public void addSpecChipsetToGroup(int idChipset, HtmlGenericControl content_specs_group) {
             HtmlGenericControl spec_chipset = new HtmlGenericControl("DIV");
-            spec_chipset.Attributes.Add("class", "spec_chipset");
+            spec_chipset.Attributes.Add("class", "spec_chipset "+ "Sepc_id"+idChipset.ToString());
+            spec_chipset.Attributes.Add("onclick", "specActionClick(this,"+ idChipset+");");
 
             HtmlGenericControl spec_name = new HtmlGenericControl("DIV");
             spec_name.Attributes.Add("class", "spec_name");
@@ -193,6 +207,20 @@ namespace WebAppCRUD.Aplicacion.Pages
 
         }
 
+        protected void btn_Page_Next_Click(object sender, EventArgs e)
+        {
+            NextPage();
+            LoadChipsets();
+        }
 
+        protected void btn_Page_Back_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btn_Page_GoTo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
