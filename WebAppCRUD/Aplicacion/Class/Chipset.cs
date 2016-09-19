@@ -15,6 +15,14 @@ namespace WebAppCRUD.Aplicacion.Class
         public string ImageAlt { get; set; }
         public bool active { get; set; }
         public int position { get; set; }
+        /// <summary>
+        /// La tupla correspondiente a los valores de las specs del chipset
+        /// </summary>
+        public DataRow Chipset_Data { get; set; }
+        /// <summary>
+        /// DataTable que contiente las características de cada una de las specs. 
+        /// se relacionan con Chipset_Data por el atributo name a la hora de obtener el valor.
+        /// </summary>
         public DataTable Data { get; set; }
         public string IdChipsetKey { get; set; }
         public string IdGroupKey { get; set; }
@@ -83,11 +91,36 @@ namespace WebAppCRUD.Aplicacion.Class
 
                     Label lbGruopName = new Label();
                     //lbGruopName.ID = "name_group_"+idChipset.ToString();
-                    lbGruopName.Text = "";
+                    lbGruopName.Text =spec["GroupName"].ToString();
                     group_name.Controls.Add(lbGruopName);
                     chipset_group_spec.Controls.Add(group_name);
                     Group = (int)spec[IdGroupKey];
                 }
+
+                HtmlGenericControl spec_chipset = new HtmlGenericControl("DIV");
+                spec_chipset.Attributes.Add("class", "spec_chipset");
+
+                HtmlGenericControl spec_name = new HtmlGenericControl("DIV");
+                spec_name.Attributes.Add("class", "spec_name");
+                Label lbSpect = new Label();
+                lbSpect.Text =spec["name"].ToString();
+                //lbSpect.ID= "chipset_spec_name_"+ idChipset.ToString();
+                lbSpect.CssClass = "chipset_spec_name";
+                spec_name.Controls.Add(lbSpect);
+
+                HtmlGenericControl spec_value = new HtmlGenericControl("DIV");
+                spec_value.Attributes.Add("class", "spec_value");
+                Label lbSpectv = new Label();
+                lbSpectv.Text = Chipset_Data[spec["name"].ToString()].ToString();
+                //lbSpectv.ID = "chipset_spec_value" + idChipset.ToString();
+                lbSpectv.CssClass = "chipset_spec_value";
+                spec_value.Controls.Add(lbSpectv);
+
+
+                spec_chipset.Controls.Add(spec_name);
+                spec_chipset.Controls.Add(spec_value);
+
+                chipset_group_spec.Controls.Add(spec_chipset);
 
 
 
