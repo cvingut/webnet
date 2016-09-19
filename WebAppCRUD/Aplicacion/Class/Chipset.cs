@@ -125,9 +125,9 @@ namespace WebAppCRUD.Aplicacion.Class
 
 
             }
-           
 
-
+            content_group_data.Controls.Add(chipset_group_spec);
+            content_data.Controls.Add(content_group_data);
 
             return content_data;
         }
