@@ -246,7 +246,7 @@
 
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 propDevice">
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 chipsetDevice">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 chipsetDevice" ondrop="drop(event)" ondragover="allowDrop(event)" id="contentChipset">
                                     <div class="chipset_data">
 
                                         <a href="#" class="thumbnail" style="margin: 20px">
@@ -457,8 +457,8 @@
                                     </button>
                                 </span>
                                 <asp:Button runat="server" ID="btn_Page_Next" Text="Next >" OnClick="btn_Page_Next_Click" />
-                                <asp:Button runat="server" ID="btn_Page_Back" Text="Back >" OnClick="btn_Page_Back_Click" />
-                                <asp:Button runat="server" ID="btn_Page_GoTo" Text="2 >" OnClick="btn_Page_GoTo_Click" />
+                                <asp:Button runat="server" ID="btn_Page_Back" Text="<Back" OnClick="btn_Page_Back_Click" />
+                                <asp:Button runat="server" ID="btn_Page_GoTo" Text="2" OnClick="btn_Page_GoTo_Click" />
                                 <asp:Button ID="btnAcept" Text="Accept" runat="server" CssClass="toolbar_btn_ch" />
                                 <asp:Button runat="server" CssClass="separator" Enabled="false" />
                                 <asp:Button ID="btnCancel" Text="Cancel" runat="server" CssClass="toolbar_btn_ch" />
@@ -478,7 +478,7 @@
                                     </div>
                                 </div>
                             </ContentTemplate>
-                            <Triggers>
+                            <Triggers>                                
                                 <asp:AsyncPostBackTrigger ControlID="btn_Page_Next" EventName="Click" />
                             </Triggers>
                         </asp:UpdatePanel>

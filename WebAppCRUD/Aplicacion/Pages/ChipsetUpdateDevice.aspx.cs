@@ -13,22 +13,31 @@ namespace WebAppCRUD.Aplicacion.Pages
     {
         private bool active;
 
-        bool Paging = true;
-        int Limit = 50;
-        int Offset = 0;
-        int Total = 2000;
-        int pActualPage;
-        int contentOverflow = -1;
+        public bool Paging;
+        public int Limit ;
+        public int Offset;
+        public int Total;
+        public int pActualPage;
+        public int contentOverflow;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
                 this.active = true;
+                Paging = true;
+                Limit = 50;
+                Offset = 0;
+                Total = 2000;
 
+              
                 this.LoadChipsets();
+               
+                //gridChipset_Content.DataBinding=
             }
            
         }
+
+        
 
         public void NextPage() {
             Offset += Limit;
@@ -50,7 +59,7 @@ namespace WebAppCRUD.Aplicacion.Pages
             {
                 HtmlChipset(i);               
             }
-
+            gridChipset_Content.DataBind();
 
         }
 
@@ -63,6 +72,7 @@ namespace WebAppCRUD.Aplicacion.Pages
                 
                 HtmlGenericControl chipset = new HtmlGenericControl("DIV");
                 chipset.Attributes.Add("class", "gp_column");
+                
 
                 HtmlGenericControl number = new HtmlGenericControl("DIV");
                 number.InnerText = i.ToString();
@@ -75,7 +85,7 @@ namespace WebAppCRUD.Aplicacion.Pages
 
                 chipset.Controls.Add(chipsetActiveStatus);
 
-                chipset.Controls.Add(HtmlData(null));
+                chipset.Controls.Add(HtmlData(null,i));
                 gpContent.Controls.Add(chipset);
                
             }
@@ -83,7 +93,7 @@ namespace WebAppCRUD.Aplicacion.Pages
             {
                 //Notificar que no se encontró 
             }
-            gpContent.DataBind();
+           
         }
 
         public HtmlGenericControl HtmlControls() {
@@ -114,10 +124,14 @@ namespace WebAppCRUD.Aplicacion.Pages
             return activeControl;
         }
 
-        public HtmlGenericControl HtmlData(DataSet data ) {
+        public HtmlGenericControl HtmlData(DataSet data ,int ix) {
 
             HtmlGenericControl chipset_data = new HtmlGenericControl("DIV");
             chipset_data.Attributes.Add("class", "chipset_data");
+            chipset_data.Attributes.Add("id", ix.ToString());
+            chipset_data.Attributes.Add("draggable", "true");
+            chipset_data.Attributes.Add("ondragstart", "drag(event)");
+
 
             #region Create ImgChipset
             HtmlGenericControl tumbImg = new HtmlGenericControl("DIV");
