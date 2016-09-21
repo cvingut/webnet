@@ -456,9 +456,9 @@
                                         <span class="glyphicon glyphicon-search"></span>
                                     </button>
                                 </span>
-                                <asp:Button runat="server" ID="btn_Page_Next" Text="Next >" OnClick="btn_Page_Next_Click" />
-                                <asp:Button runat="server" ID="btn_Page_Back" Text="<Back" OnClick="btn_Page_Back_Click" />
-                                <asp:Button runat="server" ID="btn_Page_GoTo" Text="2" OnClick="btn_Page_GoTo_Click" />
+                                <asp:Button runat="server" ID="btn_Page_Next" Text="Next >"  OnClick="btn_Page_Next_Click"  PostBackUrl="#"/>
+                                <asp:Button runat="server" ID="btn_Page_Back" Text="<Back" OnClientClick="return false;" OnClick="btn_Page_Back_Click" />
+                                <asp:Button runat="server" ID="btn_Page_GoTo" Text="2" OnClientClick="return false;" OnClick="btn_Page_GoTo_Click" />
                                 <asp:Button ID="btnAcept" Text="Accept" runat="server" CssClass="toolbar_btn_ch" />
                                 <asp:Button runat="server" CssClass="separator" Enabled="false" />
                                 <asp:Button ID="btnCancel" Text="Cancel" runat="server" CssClass="toolbar_btn_ch" />

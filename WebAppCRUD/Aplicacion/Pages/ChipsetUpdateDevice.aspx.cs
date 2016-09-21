@@ -59,7 +59,7 @@ namespace WebAppCRUD.Aplicacion.Pages
             {
                 HtmlChipset(i);               
             }
-            gridChipset_Content.DataBind();
+            
 
         }
 

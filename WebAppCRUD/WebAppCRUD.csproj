@@ -98,12 +98,14 @@
     <Content Include="Aplicacion\Images\grd_alt.png" />
     <Content Include="Aplicacion\Images\grd_head.png" />
     <Content Include="Aplicacion\Images\grd_pgr.png" />
+    <Content Include="Aplicacion\js\Spec.js" />
     <Content Include="Aplicacion\Pages\ChipsetUpdateDevice.aspx" />
     <Content Include="Aplicacion\Pages\GridChipset.aspx" />
     <Content Include="Aplicacion\Pages\Listar.aspx" />
     <Content Include="Aplicacion\Styles\General.css" />
     <Content Include="Aplicacion\Styles\MyGridView.css" />
     <Content Include="Aplicacion\Styles\Chipset.css" />
+    <Content Include="Aplicacion\Styles\Spec.css" />
     <Content Include="App_Data\DB.sdf" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">

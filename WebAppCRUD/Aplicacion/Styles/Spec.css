@@ -1,0 +1,15 @@
+﻿ .spec_chipset {
+            width: 100%;
+            border-bottom: 1px dotted #cccedb;
+            display: inline-block;
+            -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+        }
+
+            .spec_chipset:hover {
+                background-color: rgba(195, 195, 195, 0.93);
+                cursor: pointer;
+            }
+ .Spec_Selected {
+            background-color: rgba(195, 195, 195, 0.93);
+        }
