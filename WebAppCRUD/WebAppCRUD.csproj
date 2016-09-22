@@ -135,6 +135,7 @@
     </Compile>
     <Compile Include="Aplicacion\Class\Chipset.cs" />
     <Compile Include="Aplicacion\Class\GridChipset.cs" />
+    <Compile Include="Aplicacion\Class\toolstipObj.cs" />
     <Compile Include="Aplicacion\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
