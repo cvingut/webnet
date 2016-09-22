@@ -75,8 +75,12 @@ namespace WebAppCRUD.Aplicacion.Pages
                 
 
                 HtmlGenericControl number = new HtmlGenericControl("DIV");
+                number.Attributes.Add("class", "ctooltip");
+                HtmlGenericControl toolstip = new HtmlGenericControl("DIV");
+                toolstip.Attributes.Add("class", "tooltiptext");
+                toolstip.InnerHtml = "<b>Number</b>";
                 number.InnerText = i.ToString();
-
+                number.Controls.Add(toolstip);
                 HtmlGenericControl active = HtmlActive();
                 active.Controls.Add(number);
 

@@ -210,7 +210,42 @@
             background-color: rgba(195, 195, 195, 0.93);
         }
 
+        /*.ctooltip {
+           
+        }*/
+        .ctooltip .tooltiptext::after {
+            content: " ";
+            position: absolute;
+            bottom: 100%;  /* At the top of the tooltip */
+            left: 25px;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent transparent rgba(0, 0, 0, 0.59) transparent;
+        }
+        /* Tooltip text */
+        .ctooltip .tooltiptext {
+            visibility: hidden;   
+            width:20em;       
+            background-color: rgba(0, 0, 0, 0.59);
+            color: #fff;
+            text-align: center;
+            padding: 5px;
+            border-radius: 6px;
+            /* Position the tooltip text - see examples below! */
+            position: absolute;
+            margin-top:10px;
+            z-index: 1;
+            /*top: 150%;*/
+            /*left: 30%;*/
+            /*bottom: 90%;*/
+            margin-left: -20px;
+        }
 
+        /* Show the tooltip text when you mouse over the tooltip container */
+        .ctooltip:hover .tooltiptext {
+            visibility: visible;
+        }
         /*
             ---------------------------- END GRID PANEL ---------------------------
         */
