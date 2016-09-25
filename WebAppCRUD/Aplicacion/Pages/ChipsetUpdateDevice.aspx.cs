@@ -200,6 +200,7 @@ namespace WebAppCRUD.Aplicacion.Pages
             HtmlGenericControl spec_chipset = new HtmlGenericControl("DIV");
             spec_chipset.Attributes.Add("class", "spec_chipset "+ "Sepc_id"+idChipset.ToString());
             spec_chipset.Attributes.Add("onclick", "specActionClick(this,"+ idChipset+");");
+            spec_chipset.Attributes.Add("onmouseover", "specActionOver(this," + idChipset.ToString() + ");");
 
             HtmlGenericControl spec_name = new HtmlGenericControl("DIV");
             spec_name.Attributes.Add("class", "spec_name");

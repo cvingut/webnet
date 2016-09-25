@@ -106,6 +106,7 @@
     <Content Include="Aplicacion\Styles\MyGridView.css" />
     <Content Include="Aplicacion\Styles\Chipset.css" />
     <Content Include="Aplicacion\Styles\Spec.css" />
+    <Content Include="Aplicacion\Telerik\WebForm1.aspx" />
     <Content Include="App_Data\DB.sdf" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -170,6 +171,14 @@
     </Compile>
     <Compile Include="Aplicacion\Pages\Listar.aspx.designer.cs">
       <DependentUpon>Listar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicacion\Telerik\Cshrt.cs" />
+    <Compile Include="Aplicacion\Telerik\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicacion\Telerik\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

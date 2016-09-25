@@ -22,6 +22,15 @@ namespace WebApp.Aplication.Account {
         protected global::System.Web.UI.HtmlControls.HtmlForm fpUsuarios;
         
         /// <summary>
+        /// Control cellValue.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label cellValue;
+        
+        /// <summary>
         /// Control DSUsuarios.
         /// </summary>
         /// <remarks>
@@ -37,6 +46,6 @@ namespace WebApp.Aplication.Account {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvUsuarios;
+        protected global::System.Web.UI.WebControls.DataGrid gvUsuarios;
     }
 }

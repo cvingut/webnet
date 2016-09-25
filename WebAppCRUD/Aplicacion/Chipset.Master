@@ -69,6 +69,11 @@
             $(".Spec_Selected").removeClass("Spec_Selected");
             $(classElement).addClass("Spec_Selected");
         }
+
+
+        function specActionOver(element, id) {
+            $(".eventtooltiptext").show(1000);
+        }
 //        $grid-columns:      12;
 //        $grid-gutter-width: 30px;
 
