@@ -101,6 +101,7 @@
     <Content Include="Aplicacion\js\Spec.js" />
     <Content Include="Aplicacion\Pages\ChipsetUpdateDevice.aspx" />
     <Content Include="Aplicacion\Pages\GridChipset.aspx" />
+    <Content Include="Aplicacion\Pages\HtmlPage1.html" />
     <Content Include="Aplicacion\Pages\Listar.aspx" />
     <Content Include="Aplicacion\Styles\General.css" />
     <Content Include="Aplicacion\Styles\MyGridView.css" />
